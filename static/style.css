@@ -1,0 +1,23 @@
+
+body {
+  background-image: url('../static/img/bg.jpg');
+  background-size: 100%;
+}
+.uploadcontainer {  
+  float:left;
+  padding: 80px;
+  color: white;
+}
+
+.rendercontainer {  
+  float:left;
+  padding: 50px;
+  color: white;
+}
+input[type=text] {
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
