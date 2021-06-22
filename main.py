@@ -1,7 +1,6 @@
-from flask import Flask, redirect, url_for, render_template, request, send_from_directory
+from flask import Flask, redirect, render_template, request
 from werkzeug.utils import secure_filename
 import subprocess
-import os
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -9,6 +8,15 @@ app.static_folder = 'static'
 @app.route('/')
 def hello():
     return render_template("index.html")
+
+@app.route('/complete')
+def rendercomplete():
+    return render_template("complete.html")
+
+@app.route('/progress', methods=['GET'])
+def display_progress():
+	with open('filename.txt', 'r') as f:
+		return render_template('progress.html', text=f.read())
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -19,37 +27,55 @@ def upload_file():
 
 @app.route('/render', methods = ['GET', 'POST'])
 def render():
-    if request.method == "POST":
+    if request.method == "GET":
+        return render_template("renderimage.html")
+    elif request.method == "POST":
         bp = request.form["bp"]
         file = request.form["fn"]
         output = request.form["out"]
         frame = request.form["frame_n1"]
-        subprocess.Popen(f"{bp} -b {file} -o {output} -f {frame}", shell=True)
+        process = subprocess.Popen((f"{bp} -b {file} -o {output} -f {frame}"), shell=True, stdout=subprocess.PIPE)
+        while process.stdout.readable():
+            line = process.stdout.readline()
+            if not line:
+                break
+            with open('filename.txt', 'w') as f:
+                i = 0
+                while i < 1:
+                    print("Render Progress: ", line.strip().decode('utf-8'), file=f)
+                    i += 1
+                    if i == 1:
+                        break
+    return redirect("/complete", code=302)
 
-    return render_template("renderimage.html")
+
+    
 
 @app.route('/renderanim', methods = ['GET', 'POST'])
 def render_anim():
-    if request.method == "POST":
+    if request.method == "GET":
+        return render_template("renderanimation.html")
+    elif request.method == "POST":
         bp = request.form["bp"]
         file = request.form["fn"]
         output = request.form["out"]
         start_frame = request.form["s_frame"]
         end_frame = request.form["e_frame"]
-        subprocess.Popen(f"{bp} -b {file} -o {output} -s {start_frame} -e {end_frame} -P script.py -a", shell=True)
+        process = subprocess.Popen((f"{bp} -b {file} -o {output} -s {start_frame} -e {end_frame} -P script.py -a"), shell=True, stdout=subprocess.PIPE)
+        while process.stdout.readable():
+            line = process.stdout.readline()
+            if not line:
+                break
+            with open('filename.txt', 'w') as f:
+                i = 0
+                while i < 1:
+                    print("Render Progress: ", line.strip().decode('utf-8'), file=f)
+                    i += 1
+                    if i == 1:
+                        break
+    return redirect("/complete", code=302)
 
-    return render_template("renderanimation.html")
 
-@app.route('/rsync', methods = ['GET', 'POST'])
-def rsync_data():
-    if request.method == "POST":
-        localdir = request.form["bp"]
-        user = request.form["fn"]
-        hostname = request.form["out"]
-        nasdir = request.form["s_frame"]
-        subprocess.Popen(f"rsync -a --progress {localdir} {user}@{hostname}:{nasdir}", shell=True)
-
-    return render_template("rsync.html")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

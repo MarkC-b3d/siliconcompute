@@ -19,9 +19,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('render_anim') }}">Render Animation</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('rsync_data') }}">Rsync Data</a>
-        </li>
       </ul>
     </div>
     </div>
@@ -43,16 +40,22 @@
     <form action="/render" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="formGroupExampleInput">Blender Path [REMEMBER TO INCLUDE .exe!]</label>
-    <p><input type="Blender Path" name="bp" value="/home/mac/blenderinstalls/blender-2.92.0-linux64/blender" size="85"/></p>
+    <p><input type="Blender Path" name="bp" value="" size="85"/></p>
     <label for="formGroupExampleInput">Filename</label>
     <p><input type="Filename" name="fn" size="85"/></p>
     <label for="formGroupExampleInput">Output Path</label>
     <p><input type="Output" name="out" size="85"/></p>
     <label for="formGroupExampleInput">Frame Number</label>
     <p><input type="Frame_1" name="frame_n1" /></p>
-    <input type="submit" value="Render" class="button"/>
+    <input type="submit" value="Render" class="button" href="{{ url_for('display_progress') }}"/>
   </div>
 </form>
+</div>
+
+<div class="renderprogress">
+
+    <iframe src="{{ url_for('display_progress') }}" name="progressiframe" title="Render Progress" width="100%" height="250"></iframe>
+
 </div>
 
 </body>

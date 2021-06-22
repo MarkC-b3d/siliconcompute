@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static',filename='iframehandler.css') }}">
+<body>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+
+<div class="renderprogress">
+<pre>
+    {{ text }} 
+</pre>
+</div>
+</body>
+    </nav>
+<script>
+    // setInterval(function () {
+    //     $('#renderprogress').load(location.href + " #renderprogress");
+    // }, 3 * 1);
+
+        function timedRefresh(timeoutPeriod) {
+            setTimeout("location.reload(true);", timeoutPeriod);
+        }
+    window.onload = timedRefresh(2000);
+</script>

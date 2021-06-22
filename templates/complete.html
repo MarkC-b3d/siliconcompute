@@ -22,7 +22,7 @@
                         <a class="nav-link" href="{{ url_for('render_anim') }}">Render Animation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('rsync_data') }}">Rsync Data</a>
+                        <a class="nav-link" href="{{ url_for('display_progress') }}">Show Progress</a>
                     </li>
                 </ul>
             </div>
@@ -42,27 +42,11 @@
 </head>
 
 <body>
-
-    <div class="rendercontainer">
-
-        <h1>Rsync Data</h1>
-        <h2>WARNING!</h2>
-        <h2>RSYNC NEEDS INSTALLED ON RENDER NODE AND NASBOX!</h2>
-        <form action="/render" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="formGroupExampleInput">Local Directory</label> 
-                <p><input type="Local Directory" name="localdir" size="85" /></p>
-                <label for="formGroupExampleInput">NAS Directory</label>
-                <p><input type="NAS Directory" name="nasdir" size="85" /></p>
-                <label for="formGroupExampleInput">Username for NAS</label>
-                <p><input type="Username" name="user" size="40" /></p>
-                <label for="formGroupExampleInput">Hostname</label>
-                <p><input type="Hostname" name="hostname" size="40" /></p>
-
-                <input type="submit" value="Sync" class="button" />
-            </div>
-        </form>
-    </div>
+<div class="rendercontainer">
+    <h1>RENDER COMPLETE!</h1>
+        </div>
+    </form>
+</div>
 
 </body>
 

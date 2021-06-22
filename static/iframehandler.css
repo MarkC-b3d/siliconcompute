@@ -1,0 +1,13 @@
+.renderprogress{
+  float: left;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgb(0, 255, 0);
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 8px 7px 90px rgb(13, 255, 0)(255, 0, 0);
+  word-wrap: inherit;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
