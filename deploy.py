@@ -43,6 +43,7 @@ def git_clone():
     text.stylize("bold blue")
     subprocess.Popen("git clone https://github.com/MarkC-b3d/silicon")
     console.print(text)
+    finish()
 
 def finish():
     finish_panel = Panel(Text("Silicon Deployment Complete", style="bold red", justify="center"))
