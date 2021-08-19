@@ -1,9 +1,5 @@
-<<<<<<< HEAD
+
 rich == 10.7.0
 flask == 2.0.1
 Werkzeug == 2.0.1
-=======
-rich == 10.7.0
-flask == 2.0.1
-Werkzeug == 2.0.1
->>>>>>> 1c12ffd011bae4336b4ec51855acea445a16d0ae
+
