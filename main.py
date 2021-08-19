@@ -34,7 +34,7 @@ def render():
         file = request.form["fn"]
         output = request.form["out"]
         frame = request.form["frame_n1"]
-        process = subprocess.Popen((f"{bp} -b {file} -o {output} -f {frame}"), shell=True, stdout=subprocess.PIPE)
+        process = subprocess.Popen((f"{bp} -b {file} -o {output} -P script.py -f {frame}"), shell=True, stdout=subprocess.PIPE)
         while process.stdout.readable():
             line = process.stdout.readline()
             if not line:
