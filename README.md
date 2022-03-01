@@ -1,5 +1,5 @@
-# Silicon Compute
-![silicon logo](https://i.imgur.com/XhUrBqz.png)
+# Photon Compute
+![photon logo](https://i.imgur.com/PjwMg7j.png)
 
 Open source cloud compute solution designed to simplify and streamline the process of offloading rendering tasks on AWS and Google Cloud Compute with Blender.
 
@@ -14,4 +14,4 @@ SSH into remote server > Clone and deploy silicon > Make sure the server is runn
 Once you're sure the server is running you can then upload a .blend file > go to render image or animation and type in the parameters you need.
 
 # Video
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Gi41kjjyGbU/0.jpg)](https://www.youtube.com/watch?v=Gi41kjjyGbU)
+[![IMAGE ALT TEXT HERE](https://i.imgur.com/PjwMg7j.png)](https://www.youtube.com/watch?v=Gi41kjjyGbU)
