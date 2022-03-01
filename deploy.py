@@ -41,7 +41,7 @@ def git_clone():
     console = Console()
     text = Text("Downloading Silicon....")
     text.stylize("bold blue")
-    subprocess.Popen("git clone https://github.com/MarkC-b3d/silicon")
+    subprocess.Popen("git clone https://github.com/MarkC-b3d/siliconcompute")
     console.print(text)
     finish()
 
